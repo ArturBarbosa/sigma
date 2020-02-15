@@ -1,0 +1,27 @@
+{
+  "name": "sigma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webServer.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturBarbosa/sigma.git"
+  },
+  "keywords": [
+    "sigma",
+    "python",
+    "math"
+  ],
+  "author": "Artur Carneiro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturBarbosa/sigma/issues"
+  },
+  "homepage": "https://github.com/ArturBarbosa/sigma#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
