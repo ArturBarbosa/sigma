@@ -1,6 +1,6 @@
 module.exports = {
   entry: {
-    sigma: './sigma.jsx',
+    sigma: "./sigma.jsx",
   },
   module: {
     rules: [
