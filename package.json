@@ -5,9 +5,13 @@
   "description": "CS142 Project #5 - Start ReactJS PhotoApp",
   "main": "webServer.js",
   "scripts": {
+    "start": "node webServer.js",
     "build": "node_modules/.bin/webpack -d",
     "build:w": "node_modules/.bin/webpack -d --watch",
     "lint": "node_modules/.bin/eslint *.jsx components/*/*.jsx lib/*.js"
+  },
+  "engines": {
+    "node": "12.14.1"
   },
   "author": "Mendel Rosenblum <mendel@cs.stanford.edu> ",
   "license": "ISC",
