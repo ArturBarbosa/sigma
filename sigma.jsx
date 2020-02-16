@@ -6,7 +6,7 @@ import {
 import './styles/main.css';
 
 // import necessary components
-import SubmitSequence from './components/submit-sequence/SubmitSequence.jsx';
+import SubmitSequence from 'components/submit-sequence/SubmitSequence.jsx';
 
 class Sigma extends React.Component {
   constructor(props) {
