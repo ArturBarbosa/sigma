@@ -17,24 +17,44 @@ var portno = 3000;   // Port number to use
 
 var app = express();
 
+// start mongodb
+const MongoClient = require('mongodb').MongoClient
 
-// We have the express static module (http://expressjs.com/en/starter/static-files.html) do all
-// the work for us.
-app.use(express.static(__dirname));
+var db;
+const URL = "mongodb+srv://artur:Ra19271996@sigma-msxb2.mongodb.net/test?retryWrites=true&w=majority";
+MongoClient.connect(URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, 
+(err, client) => {
+  if (err) return console.log(err);
+  db = client.db('sigma')
 
-app.get('/', function (request, response) {
-  response.send('Simple web server of files from ' + __dirname);
+  app.use(express.static(__dirname));
+
+  app.get('/', function (request, response) {
+    response.send('Simple web server of files from ' + __dirname);
+  });
+
+  app.get('/getScript/:ID', (request, response) => {
+    var paramID = request.params.ID;
+    const collection = db.collection('scripts');
+    collection.findOne({ID: paramID}, (err, script) => {
+      if(err) return console.log ("error in API");
+      if(script){
+        response.status(200);
+        response.send(script);
+      } else {
+        response.status(404);
+        response.send("Nothing found.");
+      }
+    });
+    return;
+  });
+
+  var server = app.listen(portno, () => {
+    var port = server.address().port;
+    console.log('Listening at http://localhost:' + port + ' exporting the directory ' + __dirname);
+  });
 });
 
-app.get('/getScript/:ID', (request, response, next) => {
-  var ID = request.params.ID;
-  response.status(200);
-  response.json(["Tony","Lisa","Michael","Ginger","Food"]);
-  return;
-});
-
-
-var server = app.listen(portno, () => {
-  var port = server.address().port;
-  console.log('Listening at http://localhost:' + port + ' exporting the directory ' + __dirname);
-});
